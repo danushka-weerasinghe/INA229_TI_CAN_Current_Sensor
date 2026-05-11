@@ -38,6 +38,8 @@
 
 #include "config.h" /* for sensor handle names */
 
+//
+
 int main(void)
 {
     SYSCFG_DL_init();
