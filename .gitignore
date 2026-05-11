@@ -1,6 +1,7 @@
 # IDE metadata
 .metadata/
 .jxbrowser.userdata/
+.jxbrowser-data/
 .tempFiles/
 RemoteSystemsTempFiles/
 dvt/
@@ -8,6 +9,8 @@ dvt/
 # Build output
 Debug/
 Release/
+*/Debug/
+*/Release/
 *.o
 *.d
 *.out
@@ -15,11 +18,7 @@ Release/
 *.hex
 *.map
 
-# CSV logs
-summary.csv
-
 # CCS specific
-.jxbrowser-data/
 */.launches/
 */.config/
 */.xdchelp/
@@ -27,3 +26,6 @@ summary.csv
 *.args
 *.ccsproject
 *.ccxml
+
+# CSV logs
+summary.csv
