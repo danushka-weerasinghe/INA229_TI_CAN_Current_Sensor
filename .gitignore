@@ -1,0 +1,19 @@
+# IDE metadata
+.metadata/
+.jxbrowser.userdata/
+.tempFiles/
+RemoteSystemsTempFiles/
+dvt/
+
+# Build output
+Debug/
+Release/
+*.o
+*.d
+*.out
+*.elf
+*.hex
+*.map
+
+# CSV logs
+summary.csv
