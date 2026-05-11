@@ -17,3 +17,13 @@ Release/
 
 # CSV logs
 summary.csv
+
+# CCS specific
+.jxbrowser-data/
+*/.launches/
+*/.config/
+*/.xdchelp/
+*.launches
+*.args
+*.ccsproject
+*.ccxml
