@@ -9,6 +9,8 @@
 /**
  * Import the modules used in this configuration.
  */
+const GPIO          = scripting.addModule("/ti/driverlib/GPIO", {}, false);
+const GPIO1         = GPIO.addInstance();
 const MCAN          = scripting.addModule("/ti/driverlib/MCAN", {}, false);
 const MCAN1         = MCAN.addInstance();
 const SPI           = scripting.addModule("/ti/driverlib/SPI", {}, false);
@@ -31,21 +33,30 @@ mux2.inputSelect = "CANCLKMUX_PLLCLK1_OUT";
 const mux3       = system.clockTree["EXCLKMUX"];
 mux3.inputSelect = "EXCLKMUX_PLLCLK1_OUT";
 
-MCAN1.$name                    = "MCAN0";
-MCAN1.fdMode                   = false;
-MCAN1.peripheral.$assign       = "CANFD0";
-MCAN1.peripheral.rxPin.$assign = "PA27";
-MCAN1.peripheral.txPin.$assign = "PA26";
-MCAN1.txPinConfig.$name        = "ti_driverlib_gpio_GPIOPinGeneric4";
-MCAN1.rxPinConfig.$name        = "ti_driverlib_gpio_GPIOPinGeneric5";
+GPIO1.$name                          = "GPIO_GRP_0";
+GPIO1.port                           = "PORTA";
+GPIO1.portSegment                    = "Lower";
+GPIO1.associatedPins[0].$name        = "CS";
+GPIO1.associatedPins[0].initialValue = "SET";
+GPIO1.associatedPins[0].ioStructure  = "HS";
+GPIO1.associatedPins[0].pin.$assign  = "PA12";
 
 const Board                       = scripting.addModule("/ti/driverlib/Board", {}, false);
 Board.peripheral.$assign          = "DEBUGSS";
 Board.peripheral.swclkPin.$assign = "PA20";
 Board.peripheral.swdioPin.$assign = "PA19";
 
+MCAN1.$name                    = "MCAN0";
+MCAN1.fdMode                   = false;
+MCAN1.desiredNomRate           = 250;
+MCAN1.peripheral.$assign       = "CANFD0";
+MCAN1.peripheral.rxPin.$assign = "PA27";
+MCAN1.peripheral.txPin.$assign = "PA26";
+MCAN1.txPinConfig.$name        = "ti_driverlib_gpio_GPIOPinGeneric4";
+MCAN1.rxPinConfig.$name        = "ti_driverlib_gpio_GPIOPinGeneric5";
+
 SPI1.$name                              = "SPI";
-SPI1.dataSize                           = 16;
+SPI1.phase                              = "1";
 SPI1.peripheral.$assign                 = "SPI0";
 SPI1.peripheral.sclkPin.$assign         = "PA6";
 SPI1.peripheral.mosiPin.$assign         = "PA5";
