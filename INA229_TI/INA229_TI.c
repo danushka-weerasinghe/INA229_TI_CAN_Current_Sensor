@@ -8,6 +8,8 @@
  *   SHUNT_CAL   = 13107.2e6 × 286.1e-9 × 0.00025 = 938 (0x03AA)
  */
 
+//test
+
 #include "ti_msp_dl_config.h"
 #include "INA229.h"
 #include "mcu.h"
